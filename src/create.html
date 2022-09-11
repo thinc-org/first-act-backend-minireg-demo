@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mini Reg</title>
+    <meta name="description" content="Mini Reg is a demo website." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header id="site-header">
+      <h1 id="site-title">Mini Reg</h1>
+
+      <nav id="site-nav">
+        <a href="index.html" class="nav-link">Course List</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact Us</a>
+      </nav>
+    </header>
+
+    <main id="site-main">
+      <form>
+        <h1>Create new course</h1>
+        <label for="courseNo">Course Number</label>
+        <input type="text" name="" id="courseNo" />
+        <br />
+        <label for="abbrName">Course short name (in english)</label>
+        <input type="text" name="" id="abbrName" />
+        <br />
+        <label for="courseNameTh">Course full name (in thai)</label>
+        <input type="text" name="" id="courseNameTh" />
+        <br />
+        <label for="courseNameEn">Course full name (in english)</label>
+        <input type="text" name="" id="courseNameEn" />
+        <br />
+        <label for="department">department</label>
+        <input type="text" name="" id="department" />
+        <br />
+        <label for="credit">credit</label>
+        <input type="number" name="" id="credit" />
+        <br />
+        <label for="creditHours">Credited Hours</label>
+        <input type="text" name="" id="creditHours" value="LECT 1.0 CR" />
+        <br />
+        <label for="genEdType">GenEd Type</label>
+        <input type="text" name="" id="genEdType" value="NO" />
+
+        <button id="create" class="btn btn-register">Create</button>
+      </form>
+    </main>
+
+    <footer id="site-footer">Copyright 2022, Mini Reg.</footer>
+    <script src="create.js"></script>
+  </body>
+</html>
