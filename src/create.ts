@@ -1,6 +1,15 @@
 document.getElementById("create")?.addEventListener("click", submit);
 
+while (true) {
+  const backendUrl = prompt("Enter backend URL (ex: http://localhost:3000)");
+  if (backendUrl) {
+    sessionStorage.setItem("backendUrl", backendUrl);
+    break;
+  }
+}
+
 async function submit(e: Event) {
+  const backendUrl = sessionStorage.getItem("backendUrl");
   e.preventDefault();
   const field = [
     "courseNo",
@@ -19,6 +28,15 @@ async function submit(e: Event) {
   }
   course.credit = Number(course.credit);
   // Request
+  const response = await fetch(`${backendUrl}/course/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(course),
+  });
+  const data = await response.json();
+  console.log(data);
   console.log("saving", course);
   alert("บันทึกสำเร็จ");
   window.history.back();

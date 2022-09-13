@@ -10,9 +10,18 @@ interface Course {
   updatedAt: string;
 }
 
+while (true) {
+  const backendUrl = prompt("Enter backend URL (ex: http://localhost:3000)");
+  if (backendUrl) {
+    sessionStorage.setItem("backendUrl", backendUrl);
+    break;
+  }
+}
+
 async function getCourse() {
   //get course
-  const response = await fetch("https://firstact-api.thinc.in.th/courses");
+  const backendUrl = sessionStorage.getItem("backendUrl");
+  const response = await fetch(`${backendUrl}/course/`);
   const data = await response.json();
   const courses: Course[] = data.courses;
   return courses;
@@ -49,14 +58,14 @@ async function init() {
 
 async function deleteCourse(courseId: string) {
   //delete course
+  const backendUrl = sessionStorage.getItem("backendUrl");
+  const response = await fetch(`${backendUrl}/course/${courseId}`, {
+    method: "DELETE",
+  });
+  const data = await response.json();
+  console.log(data);
   await init();
   alert("Deleted Course");
 }
 
-while (true) {
-  const backendUrl = prompt("Enter backend URL");
-  if (backendUrl) {
-    break;
-  }
-}
 init();
