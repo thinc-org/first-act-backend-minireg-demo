@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc --watch",
-    "start": "serve ./src"
+    "start": "tsc && PORT=80 serve ./src"
   },
   "dependencies": {
     "http-server": "^14.1.1",

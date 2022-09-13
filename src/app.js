@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-while (true) {
+while (!sessionStorage.getItem("backendUrl")) {
     const backendUrl = prompt("Enter backend URL (ex: http://localhost:3000)");
     if (backendUrl) {
         sessionStorage.setItem("backendUrl", backendUrl);
@@ -28,6 +28,10 @@ function getCourse() {
 function init() {
     return __awaiter(this, void 0, void 0, function* () {
         const courses = yield getCourse();
+        const container = document.getElementById("courses-container");
+        if (container) {
+            container.innerHTML = "";
+        }
         for (const course of courses) {
             const section = document.createElement("section");
             section.classList.add("course");
@@ -43,7 +47,7 @@ function init() {
                 ? "ไม่ใช่ GenEd"
                 : course.genEdType}</p>
                         </div>
-                        <button type="button" class="btn delete-btn">
+                        <button type="button" onclick="deleteCourse('${course.courseNo}')" class="btn delete-btn">
                           Delete
                         </button>
                         `;
@@ -55,6 +59,12 @@ function init() {
 function deleteCourse(courseId) {
     return __awaiter(this, void 0, void 0, function* () {
         //delete course
+        const backendUrl = sessionStorage.getItem("backendUrl");
+        const response = yield fetch(`${backendUrl}/course/${courseId}`, {
+            method: "DELETE",
+        });
+        const data = yield response.json();
+        console.log(data);
         yield init();
         alert("Deleted Course");
     });

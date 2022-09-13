@@ -1,6 +1,6 @@
 document.getElementById("create")?.addEventListener("click", submit);
 
-while (true) {
+while (!sessionStorage.getItem("backendUrl")) {
   const backendUrl = prompt("Enter backend URL (ex: http://localhost:3000)");
   if (backendUrl) {
     sessionStorage.setItem("backendUrl", backendUrl);

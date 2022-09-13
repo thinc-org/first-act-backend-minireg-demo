@@ -10,7 +10,7 @@ interface Course {
   updatedAt: string;
 }
 
-while (true) {
+while (!sessionStorage.getItem("backendUrl")) {
   const backendUrl = prompt("Enter backend URL (ex: http://localhost:3000)");
   if (backendUrl) {
     sessionStorage.setItem("backendUrl", backendUrl);
@@ -29,6 +29,10 @@ async function getCourse() {
 
 async function init() {
   const courses = await getCourse();
+  const container = document.getElementById("courses-container");
+  if (container) {
+    container.innerHTML = "";
+  }
   for (const course of courses) {
     const section = document.createElement("section");
     section.classList.add("course");
@@ -46,7 +50,9 @@ async function init() {
                               : course.genEdType
                           }</p>
                         </div>
-                        <button type="button" class="btn delete-btn">
+                        <button type="button" onclick="deleteCourse('${
+                          course.courseNo
+                        }')" class="btn delete-btn">
                           Delete
                         </button>
                         `;
