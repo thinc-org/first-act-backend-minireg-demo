@@ -53,4 +53,10 @@ async function deleteCourse(courseId: string) {
   alert("Deleted Course");
 }
 
+while (true) {
+  const backendUrl = prompt("Enter backend URL");
+  if (backendUrl) {
+    break;
+  }
+}
 init();

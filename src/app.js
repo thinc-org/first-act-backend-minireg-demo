@@ -51,4 +51,10 @@ function deleteCourse(courseId) {
         alert("Deleted Course");
     });
 }
+while (true) {
+    const backendUrl = prompt("Enter backend URL");
+    if (backendUrl) {
+        break;
+    }
+}
 init();

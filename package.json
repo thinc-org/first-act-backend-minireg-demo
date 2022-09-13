@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc --watch",
-    "start": "http-server ./src"
+    "start": "serve ./src"
   },
   "dependencies": {
     "http-server": "^14.1.1",
     "typescript": "^4.8.3"
+  },
+  "devDependencies": {
+    "serve": "^14.0.1"
   }
 }
